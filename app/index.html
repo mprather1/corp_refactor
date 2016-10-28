@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />
   </head>
   <body>
-    <div id="main"></div>
+    <div id="main" class="container"></div>
   
     <script type="text/template" id="user-row">
-      
+      <td>{{firstName + " " + lastName}}</td>
+      <td>{{phone}}</td>
+      <td>{{email}}</td>
     </script>
   
     <script type="text/template" id="table-view-template">
@@ -26,6 +28,13 @@
         <th id="phone" class="table-header">Phone</th>
         <th id="email" class="table-header">Email</th>
       </tr>
+    </script>
+    
+    <script type="text/template" id="table-footer-template">
+      <button class="button button-default first-page col-sm-3">First Page</button> 
+      <button class="button button-default prev-page col-sm-3">Prev</button> 
+      <button class="button button-default next-page col-sm-3">Next</button> 
+      <button class="button button-default last-page col-sm-3">Last Page</button> 
     </script>
   
   	<script src="bower_components/jquery/dist/jquery.js"></script>
