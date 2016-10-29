@@ -17,7 +17,15 @@ var Users = Backbone.Collection.extend({
 
 var UserView = Backbone.Marionette.View.extend({
   tagName: 'tr',
-  template: "#user-row"
+  template: "#user-row",
+  serializeData: function(){
+    return {
+      "firstName": this.model.attributes.firstName.capitalizedFirstLetter(),
+      "lastName": this.model.attributes.lastName.capitalizedFirstLetter(),
+      "phone": this.model.attributes.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3'),
+      "email": "<a href='mailto:" + this.model.attributes.email + "'>" + this.model.attributes.email + "</a>"
+    };
+  }
 });
 
 var UsersView = Backbone.Marionette.CollectionView.extend({
@@ -26,8 +34,8 @@ var UsersView = Backbone.Marionette.CollectionView.extend({
 })
 
 var TableView = Backbone.Marionette.View.extend({
-  tagName: 'table',
-  className: 'table table-hover',
+  tagName: 'div',
+  className: 'panel panel-primary',
   template: '#table-view-template',
   regions: {
     head: {
@@ -39,7 +47,7 @@ var TableView = Backbone.Marionette.View.extend({
       replaceElement: true
     },
     footer: {
-      el: 'tfoot',
+      el: '#panel-buttons',
       replaceElement: true
     }
   },
@@ -62,8 +70,8 @@ var TableHeader = Backbone.Marionette.View.extend({
 })
 
 var TableFooter = Backbone.Marionette.View.extend({
-  tagName: 'tfoot',
-  className: 'tfoot tfoot-default',
+  tagName: 'div',
+  // className: 'panel-buttons',
   template: "#table-footer-template"
 })
 
