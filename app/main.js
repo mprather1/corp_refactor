@@ -36,7 +36,7 @@ var UsersView = Backbone.Marionette.CollectionView.extend({
 var TableView = Backbone.Marionette.View.extend({
   tagName: 'div',
   className: 'panel panel-primary',
-  template: '#table-view-template',
+  template: '#table-template',
   regions: {
     head: {
       el: 'thead',
@@ -71,14 +71,61 @@ var TableHeader = Backbone.Marionette.View.extend({
 
 var TableFooter = Backbone.Marionette.View.extend({
   tagName: 'div',
-  // className: 'panel-buttons',
+  className: 'panel-footer',
   template: "#table-footer-template"
+})
+
+var FormView = Backbone.Marionette.View.extend({
+  initialize: function(){
+    this.model = new User;
+  },
+  tagName: 'div',
+  className: 'panel panel-primary',
+  template: '#form-template',
+  regions: {
+    body: {
+      el: 'form',
+      replaceElement: true
+    }
+  },
+  onRender: function(){
+    this.showChildView('body', new UsersFormView({
+      
+    }))
+  }
+});
+
+var UsersFormView = Backbone.Marionette.View.extend({
+  template: '#users-form-template',
+  
+})
+
+var PageView = Backbone.Marionette.View.extend({
+  tagName: "div",
+  className: 'container-fluid',
+  template: '#page-template',
+  regions: {
+    body: {
+      el: '#table-view'
+    },
+    sidebar: {
+      el: '#sidebar-view'
+  },
+  },
+  onRender: function(){
+    this.showChildView('body', new TableView({
+      collection: this.collection
+    }));
+    this.showChildView('sidebar', new FormView({
+      
+    }));
+  }
 })
 
 var users = new Users();
 users.fetch()
 
-var tableView = new TableView({
+var pageView = new PageView({
   collection: users
 })
 
@@ -86,4 +133,4 @@ var myApp = new Marionette.Application({
   region: "#main"
 });
 
-myApp.showView(tableView);
+myApp.showView(pageView);

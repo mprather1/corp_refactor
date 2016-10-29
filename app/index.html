@@ -16,7 +16,7 @@
       <td>{{email}}</td>
     </script>
   
-    <script type="text/template" id="table-view-template">
+    <script type="text/template" id="table-template">
       <div class="panel-heading">Users</div>
         <div class='panel-body'>
           <table class="table table-hover">
@@ -40,6 +40,53 @@
       <button class="button button-default prev-page col-sm-3">Prev</button> 
       <button class="button button-default next-page col-sm-3">Next</button> 
       <button class="button button-default last-page col-sm-3">Last Page</button> 
+    </script>
+    
+    <script type="text/template" id="form-template">
+      <div class="panel-heading">Create new user</div>
+      <div class="panel-body">
+        <form></form>
+        <div class="panel-footer">
+          <button class="btn btn-default submit-button">Submit</button>
+          <button class="btn btn-default cancel-button">Cancel</button>
+        </div>
+    </script>
+    
+    <script type="text/template" id="page-template">
+      <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="navbar-inner">
+            <span class="navbar-brand active">Company Directory</span>
+          </div>
+        </nav>
+      </header>
+      <div class="row">
+        <div id='sidebar-view' class="col-sm-3"></div>
+        <div id='table-view' class="col-sm-9"></div>
+      </div>
+    </script>
+    
+    <script type="text/template" id="users-form-template" >
+      <div class="form-group">
+        <label for="firstName" class="control-label">First Name</label>
+        <input class="form-control" type="text" id="firstName_input" name="firstName" placeholder="Enter first name...">
+        <span class="help-block hidden"></span>
+      </div>
+      <div class="form-group">
+        <label for="lastName" class="control-label">Last Name</label>
+        <input class="form-control" type="text" id="lastName_input" name="lastName" placeholder="Enter last name...">
+        <span class="help-block hidden"></span>
+      </div>
+      <div class="form-group">
+        <label for="phone" class="control-label">Phone Number</label>
+        <input class="form-control" type="text" id="phone_input" name="phone" placeholder="Enter phone number...">
+        <span class="help-block hidden"></span>
+      </div>
+      <div class="form-group">
+        <label for="email" class="control-label">Email</label>
+        <input class="form-control" type="text" id="email_input" name="email" placeholder="Enter email address..."...">
+        <span class="help-block hidden"></span>
+      </div> 
     </script>
   
   	<script src="bower_components/jquery/dist/jquery.js"></script>
