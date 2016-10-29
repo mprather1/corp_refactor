@@ -35,7 +35,7 @@ var UsersView = Backbone.Marionette.CollectionView.extend({
 
 var TableView = Backbone.Marionette.View.extend({
   tagName: 'div',
-  className: 'panel panel-primary',
+  className: 'container-fluid',
   template: '#table-template',
   regions: {
     head: {
@@ -66,7 +66,17 @@ var TableView = Backbone.Marionette.View.extend({
 var TableHeader = Backbone.Marionette.View.extend({
   tagName: 'thead',
   className: 'thead thead-default',
-  template: "#table-header-template"
+  template: "#table-header-template",
+  events: {
+    'mouseover .table-header': 'mouseoverFunc',
+    'mouseout .table-header': 'mouseoutFunc'
+  },
+  mouseoverFunc: function(event){
+    $(event.currentTarget).css({"background-color":"yellow","cursor":"pointer"});
+  },
+  mouseoutFunc: function(event){
+    $(event.currentTarget).css("background-color", "#f5f5f5");
+  }
 })
 
 var TableFooter = Backbone.Marionette.View.extend({
@@ -80,7 +90,7 @@ var FormView = Backbone.Marionette.View.extend({
     this.model = new User;
   },
   tagName: 'div',
-  className: 'panel panel-primary',
+  className: 'container-fluid',
   template: '#form-template',
   regions: {
     body: {
@@ -97,6 +107,13 @@ var FormView = Backbone.Marionette.View.extend({
 
 var UsersFormView = Backbone.Marionette.View.extend({
   template: '#users-form-template',
+  
+})
+
+var SidebarView = Backbone.Marionette.View.extend({
+  tagName: 'div',
+  className: "container-fluid",
+  template: '#sidebar-template',
   
 })
 

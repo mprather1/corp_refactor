@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />
   </head>
   <body>
-    <div id="main" class="container"></div>
+    <div id="main" class="container-fluid"></div>
   
     <script type="text/template" id="user-row">
       <td>{{firstName + " " + lastName}}</td>
@@ -17,13 +17,15 @@
     </script>
   
     <script type="text/template" id="table-template">
-      <div class="panel-heading">Users</div>
-        <div class='panel-body'>
-          <table class="table table-hover">
-            <thead></thead>
-            <tbody></tbody>
-          </table>
-        <div id="panel-buttons"></div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Users</div>
+          <div class='panel-body'>
+            <table class="table table-hover">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          <div id="panel-buttons"></div>
+        </div>
       </div>
     </script>
     
@@ -43,13 +45,15 @@
     </script>
     
     <script type="text/template" id="form-template">
-      <div class="panel-heading">Create new user</div>
-      <div class="panel-body">
-        <form></form>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Create new user</div>
+        <div class="panel-body">
+        <form id="form-view"></form>
         <div class="panel-footer">
           <button class="btn btn-default submit-button">Submit</button>
           <button class="btn btn-default cancel-button">Cancel</button>
         </div>
+      </div>
     </script>
     
     <script type="text/template" id="page-template">
@@ -87,6 +91,16 @@
         <input class="form-control" type="text" id="email_input" name="email" placeholder="Enter email address..."...">
         <span class="help-block hidden"></span>
       </div> 
+    </script>
+    
+    <script type="text/template" id="sidebar-template">
+        <div class="sidebar">
+          <ul class="nav nav-sidebar">
+              <li class="active"><a href="#">Admin <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Users</a></li>
+            </ul>
+        </div>
+      </div>
     </script>
   
   	<script src="bower_components/jquery/dist/jquery.js"></script>
